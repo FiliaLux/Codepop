@@ -1,12 +1,13 @@
 import { signupController } from "./signup/signupController.js"
-//import { notificationsController } from "./notifications/notificationsController.js";
+import { notificationsController } from "./notifications/notificationsController.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const registerForm = document.querySelector("form");
-    /*const notifications = document.querySelector(".notifications");
+    const notifications = document.querySelector(".notifications");
     
     const { showNotifications } = notificationsController(notifications);
 
+    
     registerForm.addEventListener("form-element-error", (event) => {
         const errorMessage = event.detail;
         showNotifications(errorMessage);
@@ -18,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showNotifications(errorMessage, type);
     })
     
-    notificationsController(notifications);*/
+    notificationsController(notifications);
     signupController(registerForm);
 });

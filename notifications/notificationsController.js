@@ -1,11 +1,11 @@
 import { buildNotification } from "./notificationsView.js";
 
-export const notificationsController = (notifications) => {
+export function notificationsController (notifications) {
     const showNotifications = (message, type="error") => {
         const container = document.createElement("div");
         container.classList.add("notificationWindow");
         container.classList.add(type);
-        container.innerHTML = buildNotification(message, type);
+        container.innerHTML = buildNotification(message);
         
         notifications.appendChild(container);
 
@@ -18,5 +18,5 @@ export const notificationsController = (notifications) => {
         setTimeout(removeNotification, 5000);
     }; 
 
-    return showNotifications;
+    return {showNotifications};
 }

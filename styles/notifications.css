@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.notifications {
+    position: fixed;
+    top: 100px; /* debajo del header */
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 9999;
+  }
+  
+  .notificationWindow {
+    min-width: 280px;
+    max-width: 320px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .notificationWindow.success {
+    border-color: #2ecc71;
+  }
+  
+  .notificationWindow.error {
+    border-color: #e74c3c;
+  }
+  
+  .notificationWindow .message {
+    color: #333;
+    font-size: 15px;
+    flex: 1;
+  }
+  
+  .notificationWindow .closeButton {
+    background-color: transparent;
+    border: 1.5px solid;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 16px;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .notificationWindow.success .closeButton {
+    border-color: #2ecc71;
+    color: #2ecc71;
+  }
+  .notificationWindow.success .closeButton:hover {
+    background-color: #2ecc71;
+    color: white;
+  }
+  
+  .notificationWindow.error .closeButton {
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+  .notificationWindow.error .closeButton:hover {
+    background-color: #e74c3c;
+    color: white;
+  }
+  

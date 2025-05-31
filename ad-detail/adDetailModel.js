@@ -5,7 +5,7 @@ export const adDetailModel = async(productId) => {
         throw new Error("Product not available");
     }
 
-    const productDetail = response.json();
+    const productDetail = await response.json();
 
     return productDetail;
 };

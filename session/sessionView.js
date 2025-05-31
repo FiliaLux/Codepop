@@ -1,6 +1,6 @@
 export const buildAuthorizedSession = () => {
     return `
-    <a href="./create-ad.html">New ad</a>
+    <a href="./new-ad.html">New ad</a>
     <button class="logout">Log out</button>
     `
 };

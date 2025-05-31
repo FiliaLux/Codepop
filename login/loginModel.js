@@ -12,7 +12,8 @@ export const loginUser = async(email, password) => {
     });
 
     if (!response.ok) {
-        throw new Error("Unable to log in")
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Invalid credentials");
     }
 
     const {accessToken} = await response.json();

@@ -1,9 +1,16 @@
 export const buildAd = product => {
-    const productHtml = `
-        <h3>${product.name}</h3>
-        <img src=${product.img} width=150px></img>
-        <p>${product.type} - ${product.price} € </p>
-    `
+    const productHtml = document.createElement('div');
+    productHtml.className = 'ad-card';
+
+    productHtml.innerHTML = `
+    <div class="img-container">
+        <img src="${product.img}" alt="${product.name}">
+    </div>
+    <div class="ad-card-content">
+      <h3 class="ad-title">${product.name}</h3>
+      <p class="ad-price">${product.price} € - ${product.type}</p>
+    </div>
+  `;
     return productHtml;
 };
 

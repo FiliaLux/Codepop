@@ -1,9 +1,12 @@
 import { createUser } from "./signupModel.js";
 import { REGEXP } from "../utils/constants.js";
 
-export const signupController= async(form) => {
+export const signupController= (form) => {
 
-    form.addEventListener("submit", () => {
+    form.addEventListener("submit", (event) => {
+        
+        event.preventDefault();
+        
         const nameElement = form.querySelector("#username");
         const name = nameElement.value;
         
@@ -18,7 +21,7 @@ export const signupController= async(form) => {
         
         const errors = [];
 
-        const emailRegexp = new RegExp(REGEXP.mail);
+        const emailRegexp = REGEXP.mail;
         if (!emailRegexp.test(email)) {
             errors.push("Wrong email format");
         }

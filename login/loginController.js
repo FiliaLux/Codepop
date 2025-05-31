@@ -11,20 +11,40 @@ export const loginController = async(form) => {
         const passwordElement = form.querySelector("#password");
         const password = passwordElement.value;
 
-        const emailRegexp = new RegExp(REGEXP.email);
+        const errors = [];
+
+        const emailRegexp = new RegExp(REGEXP.mail);
         if (!emailRegexp.test(email)) {
-            alert("Wrong email format");
-        } else {
+            errors.push("Wrong email format");
+        }
+        if (errors.length === 0) {
             handleLoginUser(email, password);
+        }
+        else {
+            errors.forEach(error => {
+                const event = new CustomEvent("login-error", {
+                    detail: error
+                });
+                form.dispatchEvent(event);
+            });
         }
     });
 
     const handleLoginUser = async(email, password) => {
-        const token = await loginUser(email, password);
-        localStorage.setItem("token", token);
+        try {
+             const token = await loginUser(email, password);
+            localStorage.setItem("token", token);
+            
+            setTimeout(() => {
+                window.location = "/";
+            }, 2000);
         
-        setTimeout(() => {
-            window.location = "/";
-        }, 2000);
+        } catch (error) {
+            const event = new CustomEvent("login-error", {
+                detail: error.message || "Login failed",
+            });
+            form.dispatchEvent(event);
+        }
+       
     };
 };
